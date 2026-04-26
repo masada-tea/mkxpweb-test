@@ -113,10 +113,18 @@ then
     cd mruby
     cp ../../extra/build_config.rb ../../extra/vm.c.patch ./
     patch -p0 --forward < vm.c.patch
+
+    # mruby-onig-regexp を rake が clone する前に古いコミットで先占
+    mkdir -p build/repos/wasm32-unknown-gnu
+    git clone https://github.com/mattn/mruby-onig-regexp.git \
+        build/repos/wasm32-unknown-gnu/mruby-onig-regexp
+    git -C build/repos/wasm32-unknown-gnu/mruby-onig-regexp checkout 08decdc
+
     make clean
     make
     cd ..
 fi
+
 
 # Done building deps
 echo "Finished building dependencies"
