@@ -55,12 +55,9 @@ then
     wget https://github.com/mruby/mruby/archive/2.1.2.tar.gz -O mruby.tar.gz
     tar xf mruby.tar.gz && rm mruby.tar.gz
     mv mruby* mruby
+    # mruby 2.x + 最新 mruby-onig-regexp の互換性スタブ
+    touch mruby/include/mruby/presym.h
 fi
-
-# Stub for mruby 2.x compatibility
-touch mruby/include/mruby/presym.h
-
-touch mruby/include/mruby/presym.h
 
 # Get emscripten
 if [ ! -d "emsdk" ]
