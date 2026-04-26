@@ -149,13 +149,10 @@ cd build
 
 if [ ! -d "gameasync" ]
 then
-    echo "Error: gameasync not found"
-    exit 1
+    cp -R ../gameasync .
 fi
 
-# Begin processing
 cd gameasync
-
 
     # Copy standard rgss1 if custom not present
     if [ ! -f "rgss.rb" ]
