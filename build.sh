@@ -149,15 +149,13 @@ cd build
 
 if [ ! -d "gameasync" ]
 then
-    # Get sample game
-    wget https://github.com/pulsejet/knight-blade-web-async/archive/gh-pages.zip -O game.zip
-    unzip game.zip "knight-blade-web-async-gh-pages/gameasync/*"
-    mv knight-blade-web-async-gh-pages/gameasync .
-    rm -rf knight-blade-web-async-gh-pages
-    rm -f game.zip
+    echo "Error: gameasync not found"
+    exit 1
+fi
 
-    # Begin processing
-    cd gameasync
+# Begin processing
+cd gameasync
+
 
     # Copy standard rgss1 if custom not present
     if [ ! -f "rgss.rb" ]
