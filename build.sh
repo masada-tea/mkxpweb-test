@@ -35,9 +35,6 @@ then
     mv pixman* pixman
 fi
 
-# Stub for mruby 2.x compatibility
-touch mruby/include/mruby/presym.h
-
 # Get physfs
 if [ ! -d "physfs" ]
 then
@@ -45,9 +42,6 @@ then
     tar xf physfs.tar.bz2 && rm physfs.tar.bz2
     mv physfs* physfs
 fi
-
-# Stub for mruby 2.x compatibility
-touch mruby/include/mruby/presym.h
 
 # Get mruby
 if [ ! -d "mruby" ]
