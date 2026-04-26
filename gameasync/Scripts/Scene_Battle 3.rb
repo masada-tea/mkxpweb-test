@@ -22,7 +22,7 @@ class Scene_Battle
   #--------------------------------------------------------------------------
   def phase3_next_actor
     # ループ
-    begin
+    loop do
       # アクターの明滅エフェクト OFF
       if @active_battler != nil
         @active_battler.blink = false
@@ -38,7 +38,7 @@ class Scene_Battle
       @active_battler = $game_party.actors[@actor_index]
       @active_battler.blink = true
     # アクターがコマンド入力を受け付けない状態ならもう一度
-    end until @active_battler.inputable?
+    break if @active_battler.inputable?
     # アクターコマンドウィンドウをセットアップ
     phase3_setup_command_window
   end
@@ -47,7 +47,7 @@ class Scene_Battle
   #--------------------------------------------------------------------------
   def phase3_prior_actor
     # ループ
-    begin
+    loop do
       # アクターの明滅エフェクト OFF
       if @active_battler != nil
         @active_battler.blink = false
@@ -63,7 +63,7 @@ class Scene_Battle
       @active_battler = $game_party.actors[@actor_index]
       @active_battler.blink = true
     # アクターがコマンド入力を受け付けない状態ならもう一度
-    end until @active_battler.inputable?
+    break if @active_battler.inputable?
     # アクターコマンドウィンドウをセットアップ
     phase3_setup_command_window
   end

@@ -21,6 +21,9 @@ class Scene_Save < Scene_File
     file = File.open(filename, "wb")
     write_save_data(file)
     file.close
+
+    save_file_async(filename)
+
     # イベントから呼び出されている場合
     if $game_temp.save_calling
       # セーブ呼び出しフラグをクリア
@@ -80,5 +83,6 @@ class Scene_Save < Scene_File
     Marshal.dump($game_troop, file)
     Marshal.dump($game_map, file)
     Marshal.dump($game_player, file)
+    Marshal.dump(1, file)
   end
 end

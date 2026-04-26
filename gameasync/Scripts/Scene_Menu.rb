@@ -57,18 +57,9 @@ class Scene_Menu
     # トランジション実行
     Graphics.transition
     # メインループ
-    loop do
-      # ゲーム画面を更新
-      Graphics.update
-      # 入力情報を更新
-      Input.update
-      # フレーム更新
-      update
-      # 画面が切り替わったらループを中断
-      if $scene != self
-        break
-      end
-    end
+  end
+
+  def dispose
     # トランジション準備
     Graphics.freeze
     # ウィンドウを解放
