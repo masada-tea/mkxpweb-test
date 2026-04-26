@@ -48,6 +48,8 @@ then
     mv mruby* mruby
     # mruby 2.x + 最新 mruby-onig-regexp の互換性スタブ
     touch mruby/include/mruby/presym.h
+    # デフォルト gembox から onig-regexp を除外
+    sed -i '/onig/d' mruby/mrbgems/default.gembox
 fi
 
 # Get emscripten
