@@ -1,0 +1,68 @@
+name: Build mkxp-web
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev \
+            libopenal-dev libsigc++-2.0-dev libphysfs-dev \
+            libpixman-1-dev libvorbis-dev zlib1g-dev \
+            libboost-dev libboost-program-options-dev \
+            timidity ffmpeg ruby rake
+
+      - name: Setup Emscripten
+        uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: latest
+
+      - name: Apply vm.c patch
+        run: |
+          patch -p1 < extra/vm.c.patch || true
+
+      - name: Convert audio assets
+        run: |
+          bash extra/convert_audio.sh gameasync/Audio || true
+
+      - name: Generate file mapping
+        run: |
+          bash extra/make_mapping.sh gameasync
+
+      - name: Build
+        run: |
+          source deps/emsdk/emsdk_env.sh
+          mkdir -p build && cd build
+          emcmake cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
+          emmake make -j$(nproc)
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: mkxp-web-build
+          path: |
+            build/*.js
+            build/*.wasm
+            build/*.html
+            index.html
+          retention-days: 7
+
+      # GitHub Pages へ自動デプロイする場合は以下を有効化
+      # - name: Deploy to GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./build
