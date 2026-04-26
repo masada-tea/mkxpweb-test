@@ -46,11 +46,16 @@ then
     wget https://github.com/mruby/mruby/archive/2.1.2.tar.gz -O mruby.tar.gz
     tar xf mruby.tar.gz && rm mruby.tar.gz
     mv mruby* mruby
-    # mruby 2.x + 最新 mruby-onig-regexp の互換性スタブ
     touch mruby/include/mruby/presym.h
-    # デフォルト gembox から onig-regexp を除外
-    sed -i '/onig/d' mruby/mrbgems/default.gembox
 fi
+
+# Get mruby-onig-regexp (mruby 2.x 互換の古いコミットを固定)
+if [ ! -d "mruby-onig-regexp" ]
+then
+    git clone https://github.com/mattn/mruby-onig-regexp.git
+    git -C mruby-onig-regexp checkout 08decdc
+fi
+
 
 # Get emscripten
 if [ ! -d "emsdk" ]
