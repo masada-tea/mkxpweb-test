@@ -11,7 +11,7 @@ MRuby::CrossBuild.new('wasm32-unknown-gnu') do |conf|
     conf.gem :github => 'monochromegane/mruby-time-strftime'
     conf.gem :core => 'mruby-eval'
     # ↓ これを追加（presym.h 不要な最後のコミットに固定）
-    conf.gem :github => 'mattn/mruby-onig-regexp', :commit => '08decdc'
+    conf.gem :github => 'mattn/mruby-onig-regexp', :ref => '08decdc'
     conf.cc.command = 'emcc'
     conf.cc.flags = %W(-O3 -g0)
     conf.cxx.command = 'em++'
