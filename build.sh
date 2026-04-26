@@ -48,6 +48,8 @@ then
     mv mruby* mruby
 fi
 
+touch mruby/include/mruby/presym.h
+
 # Get emscripten
 if [ ! -d "emsdk" ]
 then
