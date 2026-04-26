@@ -24,6 +24,9 @@ then
     mv libsigc++* libsigc++
 fi
 
+# Stub for mruby 2.x compatibility
+touch mruby/include/mruby/presym.h
+
 # Get pixman
 if [ ! -d "pixman" ]
 then
@@ -31,6 +34,9 @@ then
     tar xf pixman.tar.gz && rm pixman.tar.gz
     mv pixman* pixman
 fi
+
+# Stub for mruby 2.x compatibility
+touch mruby/include/mruby/presym.h
 
 # Get physfs
 if [ ! -d "physfs" ]
@@ -40,6 +46,9 @@ then
     mv physfs* physfs
 fi
 
+# Stub for mruby 2.x compatibility
+touch mruby/include/mruby/presym.h
+
 # Get mruby
 if [ ! -d "mruby" ]
 then
@@ -47,6 +56,9 @@ then
     tar xf mruby.tar.gz && rm mruby.tar.gz
     mv mruby* mruby
 fi
+
+# Stub for mruby 2.x compatibility
+touch mruby/include/mruby/presym.h
 
 touch mruby/include/mruby/presym.h
 
@@ -62,6 +74,9 @@ then
     cd ..
 fi
 
+# Stub for mruby 2.x compatibility
+touch mruby/include/mruby/presym.h
+
 # Activate emscripten
 source emsdk/emsdk_env.sh
 
@@ -76,6 +91,9 @@ then
     cd ..
 fi
 
+# Stub for mruby 2.x compatibility
+touch mruby/include/mruby/presym.h
+
 # Build pixman
 if [ ! -f "pixman/pixman/.libs/libpixman-1.a" ]
 then
@@ -87,6 +105,9 @@ then
     cd ../..
 fi
 
+# Stub for mruby 2.x compatibility
+touch mruby/include/mruby/presym.h
+
 # Build physfs
 if [ ! -f "physfs/libphysfs.a" ]
 then
@@ -96,6 +117,9 @@ then
     emmake make -j4 physfs-static
     cd ..
 fi
+
+# Stub for mruby 2.x compatibility
+touch mruby/include/mruby/presym.h
 
 # Build mruby
 if [ ! -f "mruby/build/wasm32-unknown-gnu/lib/libmruby.a" ]
@@ -107,6 +131,9 @@ then
     make
     cd ..
 fi
+
+# Stub for mruby 2.x compatibility
+touch mruby/include/mruby/presym.h
 
 # Done building deps
 echo "Finished building dependencies"
@@ -163,6 +190,9 @@ then
     # Game processing done
     cd ..
 fi
+
+# Stub for mruby 2.x compatibility
+touch mruby/include/mruby/presym.h
 
 # Make deployable
 mv mkxp.html index.html
