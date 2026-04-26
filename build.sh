@@ -118,12 +118,13 @@ then
     mkdir -p build/repos/wasm32-unknown-gnu
     git clone https://github.com/mattn/mruby-onig-regexp.git \
         build/repos/wasm32-unknown-gnu/mruby-onig-regexp
-    git -C build/repos/wasm32-unknown-gnu/mruby-onig-regexp checkout 08decdc
+    git -C build/repos/wasm32-unknown-gnu/mruby-onig-regexp checkout 6f6b1a8
 
     make clean
     make
     cd ..
 fi
+
 
 
 # Done building deps
