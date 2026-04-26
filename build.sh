@@ -154,33 +154,33 @@ fi
 
 cd gameasync
 
-    # Copy standard rgss1 if custom not present
-    if [ ! -f "rgss.rb" ]
-    then
-        cp ../../extra/rgss.rb .
-    fi
-
-    # Make mappings
-    ../../extra/make_mapping.sh
-
-    # Preload data
-    rm -rf preload ../preload
-    cp ../../extra/dump* .
-    for f in Data/*
-    do
-        ./dump.sh "$f" > /dev/null
-        echo "Processed file: $f"
-    done
-    rm dump*
-    mv preload ..
-
-    # Game processing done
-    cd ..
+# Copy standard rgss1 if custom not present
+if [ ! -f "rgss.rb" ]
+then
+    cp ../../extra/rgss.rb .
 fi
+
+# Make mappings
+../../extra/make_mapping.sh
+
+# Preload data
+rm -rf preload ../preload
+cp ../../extra/dump* .
+for f in Data/*
+do
+    ./dump.sh "$f" > /dev/null
+    echo "Processed file: $f"
+done
+rm dump*
+mv preload ..
+
+# Game processing done
+cd ..
 
 # Make deployable
 mv mkxp.html index.html
 touch .nojekyll
+
 
 # Done
 echo "Finished everything"
