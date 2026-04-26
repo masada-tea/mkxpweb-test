@@ -53,7 +53,7 @@ fi
 if [ ! -d "mruby-onig-regexp" ]
 then
     git clone https://github.com/mattn/mruby-onig-regexp.git
-    git -C mruby-onig-regexp checkout 08decdc
+    git -C build/repos/wasm32-unknown-gnu/mruby-onig-regexp checkout 6f6b1a8
 fi
 
 
