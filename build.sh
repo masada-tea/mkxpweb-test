@@ -24,9 +24,6 @@ then
     mv libsigc++* libsigc++
 fi
 
-# Stub for mruby 2.x compatibility
-touch mruby/include/mruby/presym.h
-
 # Get pixman
 if [ ! -d "pixman" ]
 then
