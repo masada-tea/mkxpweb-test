@@ -77,7 +77,7 @@ if [ ! -f "libsigc++/sigc++/.libs/libsigc-2.0.a" ]
 then
     cd libsigc++
     emconfigure ./autogen.sh
-    emconfigure ./configure --enable-static --disable-shared
+    emconfigure ./configure --host=wasm32-unknown-emscripten --enable-static --disable-shared
     emmake make clean
     emmake make -j4 || true
     cd ..
