@@ -64,8 +64,8 @@ then
     git clone https://github.com/emscripten-core/emsdk.git
     cd emsdk
     git pull
-    ./emsdk install 2.0.34
-    ./emsdk activate 2.0.34
+    ./emsdk install 3.1.14
+    ./emsdk activate 3.1.14
     cd ..
 fi
 
@@ -77,7 +77,7 @@ if [ ! -f "libsigc++/sigc++/.libs/libsigc-2.0.a" ]
 then
     cd libsigc++
     emconfigure ./autogen.sh
-    emconfigure ./configure --host=wasm32-unknown-emscripten --enable-static --disable-shared
+    emconfigure ./configure --enable-static --disable-shared
     emmake make clean
     emmake make -j4 || true
     cd ..
