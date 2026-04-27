@@ -64,8 +64,8 @@ then
     git clone https://github.com/emscripten-core/emsdk.git
     cd emsdk
     git pull
-    ./emsdk install latest
-    ./emsdk activate latest
+    ./emsdk install 2.0.34
+    ./emsdk activate 2.0.34
     cd ..
 fi
 
