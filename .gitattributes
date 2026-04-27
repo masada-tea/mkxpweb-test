@@ -1,1 +1,2 @@
+gameasync/** filter=lfs diff=lfs merge=lfs -text
 gameasync/** !text !filter !merge !diff
