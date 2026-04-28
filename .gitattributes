@@ -1,6 +1,5 @@
-gameasync/** filter=lfs diff=lfs merge=lfs -text
-gameasync/Data/*.rxdata binary
-gameasync/**/*.rxdata binary
-gameasync/**/*.png binary
-gameasync/**/*.ogg binary
+gameasync/**/*.rxdata filter=lfs diff=lfs merge=lfs -text
+gameasync/**/*.png filter=lfs diff=lfs merge=lfs -text
+gameasync/**/*.ogg filter=lfs diff=lfs merge=lfs -text
+gameasync/**/*.exe filter=lfs diff=lfs merge=lfs -text
 gameasync/** !text !filter !merge !diff
