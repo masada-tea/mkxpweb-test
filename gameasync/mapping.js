@@ -17,11 +17,11 @@ var mappingArray = [
 ["data/troops", "Data/Troops.rxdata?h=c4648c72337aed54219675cb9c7e8f6c"],
 ["data/weapons", "Data/Weapons.rxdata?h=73b98845793f7619081c2c45171ad69c"],
 ["game", "Game.exe?h=c22b8d8acb738776d94ea0cc10277144"],
-["game", "Game.ini?h=c84975eba54d16b3243a82588ee3d01f"],
-["game", "Game.rxproj?h=8b3d27798d88da90ec326fcc3e3ccd19"],
-["rgss104j", "RGSS104J.dll?h=ae858cb108e43fa708d81525cd48662e"],
+["game", "Game.ini?h=a62fce33b1f9ebda9daed7e02124d2bb"],
+["game", "Game.rxproj?h=e2c71c682b4b53f6030bbae1f8935078"],
+["rgss104j", "RGSS104J.dll?h=00d55ab17e8677e866c0ef66d515d55e"],
 ["bitmap-map", "bitmap-map.js?h=8d29145a907a99d776f9603eb356d5fa"],
-["mapping", "mapping.js?h=9200cbc5596557ab8d881f529a771a0f"],
+["mapping", "mapping.js?h=6e3bba9627cb5901fca87b2d11e368ae"],
 ["rgss", "rgss.rb?h=e4f6ce1cd6617eedd6e4704cfd0d263b"],
 ];
 
