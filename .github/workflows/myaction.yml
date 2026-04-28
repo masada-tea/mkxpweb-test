@@ -16,6 +16,11 @@ jobs:
           submodules: recursive
           lfs: true
 
+      - name: Pull LFS files
+        run: |
+          sudo apt-get install -y git-lfs
+          git lfs pull
+      
       - name: Install OS dependencies
         run: |
           sudo apt-get update
