@@ -154,7 +154,16 @@ fi
 
 cd gameasync
 
-../../extra/convert_audio.sh Audio
+#../../extra/convert_audio.sh Audio
+
+# MIDI → OGG 直接変換
+find Audio -name "*.mid" -o -name "*.MID" | while read f; do
+    base="${f%.*}"
+    timidity "$f" -Ow -o "${base}.wav" && \
+    ffmpeg -i "${base}.wav" "${base}.ogg" -y && \
+    rm -f "${base}.wav" "$f"
+    echo "Converted: $f"
+done
 
 # Copy standard rgss1 if custom not present
 if [ ! -f "rgss.rb" ]
