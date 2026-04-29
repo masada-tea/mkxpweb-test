@@ -1,5 +1,7 @@
 #!/bin/bash
 
+shopt -s globstar
+
 # MID2OGG
 for file in Audio/**/*.mid
 do
