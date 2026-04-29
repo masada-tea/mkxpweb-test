@@ -154,7 +154,7 @@ fi
 
 cd gameasync
 
-../extra/convert_audio.sh Audio
+../../extra/convert_audio.sh Audio
 
 # Copy standard rgss1 if custom not present
 if [ ! -f "rgss.rb" ]
