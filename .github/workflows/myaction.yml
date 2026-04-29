@@ -30,6 +30,8 @@ jobs:
       - name: Build
         run: |
           bash build.sh
+          # デバッグ用
+          cat build/gameasync/mapping.js | head -20
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
