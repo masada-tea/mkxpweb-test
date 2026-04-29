@@ -1,7 +1,5 @@
 #!/bin/bash
 
-shopt -s globstar
-
 # MID2OGG
 for file in Audio/**/*.mid
 do
@@ -31,14 +29,14 @@ rm "$file"
 done
 
 # WAV TO OGG
-for file in Audio/**/*.wav
-do
+#for file in Audio/**/*.wav
+#do
 
-filename="${file%.*}"
-echo "$filename"
+#filename="${file%.*}"
+#echo "$filename"
 
-ffmpeg -i "$file" -c:a libvorbis -qscale:a 0 "CONV/$filename.ogg"
-rm "$file"
+#ffmpeg -i "$file" -c:a libvorbis -qscale:a 0 "CONV/$filename.ogg"
+#rm "$file"
 
-done
+#done
 
