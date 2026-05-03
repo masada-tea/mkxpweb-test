@@ -148,14 +148,11 @@ cp -R mkxp.html mkxp.wasm mkxp.js extra/*.webmanifest extra/js build/
 
 cd build
 
-# 毎回クリーンコピー
 rm -rf gameasync
 cp -R ../gameasync .
 
-cd gameasync
-
-# ① 大文字小文字の正規化（最重要）
-find . -depth | while read f; do
+# 全ファイル・ディレクトリ名を小文字に正規化
+find gameasync -depth | while read f; do
     dir=$(dirname "$f")
     base=$(basename "$f")
     lower=$(echo "$base" | tr '[:upper:]' '[:lower:]')
@@ -163,6 +160,17 @@ find . -depth | while read f; do
         mv "$f" "$dir/$lower" 2>/dev/null || true
     fi
 done
+
+cd gameasync
+
+# 以降はすべて小文字で統一されているので
+for f in data/*
+do
+    [ -f "$f" ] || continue
+    ./dump.sh "$f" > /dev/null
+    echo "Processed file: $f"
+done
+
 
 # ② MIDI → OGG
 find Audio -name "*.mid" 2>/dev/null | while read f; do
