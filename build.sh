@@ -167,7 +167,7 @@ cd gameasync
 for f in data/*
 do
     [ -f "$f" ] || continue
-    ./dump.sh "$f" > /dev/null
+    ../extra/dump.sh "$f" > /dev/null
     echo "Processed file: $f"
 done
 
