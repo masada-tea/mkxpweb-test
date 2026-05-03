@@ -145,14 +145,6 @@ cp -R mkxp.html mkxp.wasm mkxp.js extra/*.webmanifest extra/js build/
 # ==========================
 # GAME_PROCESSING
 # ==========================
-cd build
-
-if [ ! -d "gameasync" ]
-then
-    cp -R ../gameasync .
-fi
-
-cd gameasync
 
 cd build
 
