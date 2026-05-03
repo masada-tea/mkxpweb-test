@@ -154,24 +154,49 @@ fi
 
 cd gameasync
 
-#../../extra/convert_audio.sh Audio
+cd build
 
-# MIDI → OGG 直接変換
-find Audio -name "*.mid" -o -name "*.MID" | while read f; do
+# 毎回クリーンコピー
+rm -rf gameasync
+cp -R ../gameasync .
+
+cd gameasync
+
+# ① 大文字小文字の正規化（最重要）
+find . -depth | while read f; do
+    dir=$(dirname "$f")
+    base=$(basename "$f")
+    lower=$(echo "$base" | tr '[:upper:]' '[:lower:]')
+    if [ "$base" != "$lower" ] && [ -e "$f" ]; then
+        mv "$f" "$dir/$lower" 2>/dev/null || true
+    fi
+done
+
+# ② MIDI → OGG
+find Audio -name "*.mid" 2>/dev/null | while read f; do
     base="${f%.*}"
     timidity "$f" -Ow -o "${base}.wav" && \
     ffmpeg -i "${base}.wav" "${base}.ogg" -y && \
     rm -f "${base}.wav" "$f"
-    echo "Converted: $f"
 done
 
-# Copy standard rgss1 if custom not present
-if [ ! -f "rgss.rb" ]
-then
+# ③ WAV → OGG
+find Audio -name "*.wav" 2>/dev/null | while read f; do
+    base="${f%.*}"
+    ffmpeg -i "$f" "${base}.ogg" -y && rm -f "$f"
+done
+
+# ④ BMP → PNG
+find Graphics -name "*.bmp" 2>/dev/null | while read f; do
+    base="${f%.*}"
+    ffmpeg -i "$f" "${base}.png" -y && rm -f "$f"
+done
+
+if [ ! -f "rgss.rb" ]; then
     cp ../../extra/rgss.rb .
 fi
 
-# Make mappings
+# ⑤ マッピング生成（正規化後に実行）
 ../../extra/make_mapping.sh
 
 # Preload data
